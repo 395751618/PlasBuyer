@@ -80,8 +80,4 @@ const StackNavigator = createStackNavigator(routeConfigs, stackNavigatorConfig);
 
 const RootNavigator = createAppContainer(StackNavigator);
 
-export default class App1 extends React.Component {
-  render() {
-    return <RootNavigator />;
-  }
-}
+export default RootNavigator;
