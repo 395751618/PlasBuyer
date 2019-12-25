@@ -5,7 +5,7 @@ import zh from './zh';
 
 I18n.fallbacks = true;
 
-I18n.defaultLocale = DeviceInfo.getDeviceLocale();
+I18n.defaultLocale = 'en';
 
 I18n.translations = {
   en,
