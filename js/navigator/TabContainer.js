@@ -4,68 +4,41 @@ import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeNavigator from '../navigator/HomeContainer';
-
-class HomeScreen1 extends React.Component {
-  render() {
-    return (
-      // eslint-disable-next-line react-native/no-inline-styles
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>HomeScreen1</Text>
-      </View>
-    );
-  }
-}
-
-class HomeScreen2 extends React.Component {
-  render() {
-    return (
-      // eslint-disable-next-line react-native/no-inline-styles
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>HomeScreen2</Text>
-      </View>
-    );
-  }
-}
-
-class HomeScreen3 extends React.Component {
-  render() {
-    return (
-      // eslint-disable-next-line react-native/no-inline-styles
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>HomeScreen3</Text>
-      </View>
-    );
-  }
-}
-
-class HomeScreen4 extends React.Component {
-  render() {
-    return (
-      // eslint-disable-next-line react-native/no-inline-styles
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>HomeScreen4</Text>
-      </View>
-    );
-  }
-}
+import RecommendNavigator from '../navigator/RecommendContainer';
+import CategoryNavigator from '../navigator/CategoryContainer';
+import HMeNavigator from '../navigator/MeContainer';
+import I18n from '../i18n/locales/index';
+import MeNavigator from '../navigator/MeContainer';
 
 const RouteConfigs = {
-  HomeScreen1: {
+  TabScreen1: {
     screen: HomeNavigator,
+    navigationOptions: {
+      tabBarLabel: I18n.t('home'),
+    },
   },
-  HomeScreen2: {
-    screen: HomeScreen2,
+  TabScreen2: {
+    screen: RecommendNavigator,
+    navigationOptions: {
+      tabBarLabel: I18n.t('recommend'),
+    },
   },
-  HomeScreen3: {
-    screen: HomeScreen3,
+  TabScreen3: {
+    screen: CategoryNavigator,
+    navigationOptions: {
+      tabBarLabel: I18n.t('category'),
+    },
   },
-  HomeScreen4: {
-    screen: HomeScreen4,
+  TabScreen4: {
+    screen: MeNavigator,
+    navigationOptions: {
+      tabBarLabel: I18n.t('me'),
+    },
   },
 };
 
 const TabNavigatorConfig = {
-  initialRouteName: 'HomeScreen1',
+  initialRouteName: 'TabScreen1',
   tabBarOptions: {
     activeTintColor: 'black',
     labelStyle: {
