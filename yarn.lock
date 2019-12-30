@@ -948,6 +948,11 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
+"@react-native-community/viewpager@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-3.3.0.tgz#e613747a43a31a6f3278f817ba96fdaaa7941f23"
+  integrity sha512-tyzh79l4t/hxiyS9QD3LRmWMs8KVkZzjrkQ8U8+8To1wmvVCBtp8BenvNsDLTBO7CpO/YmiThpmIdEZMr1WuVw==
+
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
@@ -5327,11 +5332,6 @@ react-native-keyboard-aware-scroll-view@0.9.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
-
-react-native-listview-refresh@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/react-native-listview-refresh/-/react-native-listview-refresh-0.6.2.tgz#22f6d0d8afccf38de69354947dded83ccd19b73f"
-  integrity sha512-usJuP6+dV7Qj9OojboncCNA7f0hcY0mp24EQemqIt1AT1ZBFVcQQxXRLkFM/4BX5ZHTtyr5dtmhkjcqHahcxsg==
 
 react-native-reanimated@^1.4.0:
   version "1.4.0"
