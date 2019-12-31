@@ -1,9 +1,8 @@
-import {getFetchRequest, fetchRequestAsync} from './fetch';
+import {getFetchRequest, postFetchRequest, fetchRequestAsync} from './fetch';
 
-// export const homeBannerList = fetchRequest('server/api', 'GET', {}).then(
-//   res => {},
-// );
-
+/**
+ * 首页轮播图
+ */
 export function homeBannerList() {
   return getFetchRequest('server/api/banner', 'GET', {});
 }

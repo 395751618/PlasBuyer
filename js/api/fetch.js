@@ -6,17 +6,23 @@ import I18n from '../i18n/locales/index';
 const locale = I18n.t('locale');
 
 const defaultConfig = {
-  baseURL: 'http://dev.mindertech.net/',
+  baseURL: baseUrl(),
   headers: {
-    // 设置content-type 为表单提交格式
     'Content-type': 'application/x-www-form-urlencoded',
-    // 设置请求方式
     'X-Requested-With': 'XMLHttpRequest',
-    'Accept-Language': {locale},
+    'Accept-Language': locale,
     'X-app-id': 'buyer',
     Accept: 'application/json, text/plain, */*',
   },
 };
+
+function baseUrl() {
+  if (isDebug) {
+    return 'http://dev.mindertech.net/';
+  } else {
+    return 'http://dev.mindertech.net/';
+  }
+}
 
 function convertUrl(url) {
   let realUrl = defaultConfig.baseURL + url;
@@ -28,13 +34,13 @@ function convertUrl(url) {
 }
 
 export function getFetchRequest(url, body) {
-  if (body) {
-    let str = '';
-    for (var key in body) {
-      str += '&' + key + '=' + body[key];
-    }
-    url = url + '?' + str.substr(1);
-  }
+  // if (body) {
+  //   let str = '';
+  //   for (var key in body) {
+  //     str += '&' + key + '=' + body[key];
+  //   }
+  //   url = url + '?' + str.substr(1);
+  // }
 
   let promise = null;
   promise = new Promise(function(resolve, reject) {
@@ -43,14 +49,40 @@ export function getFetchRequest(url, body) {
       headers: defaultConfig.headers,
     })
       .then(response => {
-        if (response.status === 200) {
-          return response.json();
-        }
-        return response;
+        return response.json();
       })
       .then(responseJson => {
+        if (isDebug) {
+          console.log(responseJson);
+        }
         resolve(responseJson);
-        console.log(responseJson);
+      })
+      .catch(error => {
+        if (isDebug) {
+          console.error('request error: ' + error);
+        }
+        reject(error);
+      });
+  });
+  return warp_fetch(promise);
+}
+
+export function postFetchRequest(url, method, body) {
+  let promise = null;
+  promise = new Promise(function(resolve, reject) {
+    fetch(convertUrl(url), {
+      method: method,
+      headers: defaultConfig.headers,
+      body: body,
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        if (isDebug) {
+          console.log(responseJson);
+        }
+        resolve(responseJson);
       })
       .catch(error => {
         if (isDebug) {
@@ -118,5 +150,6 @@ function warp_fetch(fetch_promise, timeout = 10000) {
   setTimeout(timeout_fn, timeout);
   //终止
   abortable_promise.abort = abort;
+
   return abortable_promise;
 }

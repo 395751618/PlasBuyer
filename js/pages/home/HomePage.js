@@ -64,6 +64,11 @@ class HomePage extends PureComponent {
     promise.then(
       function(response) {
         console.log('response:', response);
+        var dic = JSON.stringify(response);
+        console.log('dic:', dic);
+        var data = JSON.parse(dic);
+        console.log('data:', data);
+        console.log('payload:', data.payload.files.list);
       },
       function(error) {
         console.log('error:', error);
