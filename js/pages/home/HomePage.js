@@ -11,7 +11,8 @@ import {
   SectionList,
 } from 'react-native';
 import HomeTopView from '../../components/HomeTopView/HomeTopView';
-import {fetchRequest} from '../../api/fetch';
+import {fetchRequestAsync} from '../../api/fetch';
+import {homeBannerList} from '../../api/api';
 // import {
 //   RefreshState,
 //   RefreshListView,
@@ -48,9 +49,27 @@ class HomePage extends PureComponent {
       {key: '1Dan4'},
     ];
 
-    fetchRequest('server/api', 'GET', {}).then(res => {
-      console.log(res);
-    });
+    // let promise = FetchManager.fetchRequestAsync('server/api', 'GET', {});
+    // let promise = fetchRequestAsync('server/api', 'GET', {});
+    // promise.then(
+    //   function(response) {
+    //     console.log('response:', response);
+    //   },
+    //   function(error) {
+    //     console.log('error:', error);
+    //   },
+    // );
+
+    let promise = homeBannerList();
+    promise.then(
+      function(response) {
+        console.log('response:', response);
+      },
+      function(error) {
+        console.log('error:', error);
+      },
+    );
+
     // this.createView1 = (
     //   <View style={styles.container}>
     //     <FlatList

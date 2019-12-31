@@ -1,4 +1,5 @@
 export default {
+  locale: 'zh-cn',
   greeting: '你好!',
   home: '首页',
   recommend: '推荐',

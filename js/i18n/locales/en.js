@@ -1,4 +1,5 @@
 export default {
+  locale: 'en',
   greeting: 'Hi!',
   home: 'Home',
   recommend: 'Recommend',
